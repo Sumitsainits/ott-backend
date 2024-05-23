@@ -2,10 +2,10 @@ name: Basic CI setup
 
 on:
   push:
-    branches: 
+    branches:
       - main
   pull_request:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build
-        run: yarn build --if-present
+        run: yarn run build
 
       - name: Test
         run: yarn test
