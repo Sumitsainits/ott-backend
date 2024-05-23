@@ -8,26 +8,26 @@ This service is part of an OTT platform and is responsible for managing the "My 
 
 ## Installation
 
-# Clone the repository:
+### Clone the repository:
 
 ```bash
 $ git clone https://github.com/Sumitsainits/ott-backend.git
 ```
 
-# Install dependencies:
+### Install dependencies:
 
 ```bash
 $ yarn install
 ```
 
-# Add .env file with following keys
+### Add .env file with following keys
 
 ```
 MONGO_CONNECTION_STRING=mongodb+srv://<username>:<password>@cluster0.ntcgdqa.mongodb.net/
 API_KEY=some token
 ```
 
-# Seed your DB with Dummy Data
+### Seed your DB with Dummy Data
 
 ```bash
 $ yarn run seed
