@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MyListController } from '../myList.controller';
 import { MyListService } from '../myList.service';
+import { ContentType } from '../../../types';
 
 describe('MyListController', () => {
   let controller: MyListController;
@@ -39,9 +40,15 @@ describe('MyListController', () => {
 
   describe('#createOne', () => {
     it('should call createListItem method of MyListService with the correct parameter', async () => {
-      const body = {};
-      await controller.createOne(body);
-      expect(service.createListItem).toHaveBeenCalledWith(body);
+      const body = {
+        contentName: 'mocked-content-name',
+        contentType: ContentType.MOVIE,
+      };
+      await controller.createOne('mocked-user-id', body);
+      expect(service.createListItem).toHaveBeenCalledWith(
+        'mocked-user-id',
+        body,
+      );
     });
   });
 

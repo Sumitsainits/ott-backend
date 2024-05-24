@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { MyListService } from './myList.service';
+import { CreateMyListDto } from '../../dtos/myList.dto';
 
 @Controller('/user/:id/my-list')
 export class MyListController {
@@ -10,8 +11,8 @@ export class MyListController {
   }
 
   @Post()
-  createOne(@Body() body) {
-    return this.service.createListItem(body);
+  createOne(@Param('id') id: string, @Body() body: CreateMyListDto) {
+    return this.service.createListItem(id, body);
   }
 
   @Delete(':itemId')

@@ -3,6 +3,7 @@ import { getModelToken } from '@nestjs/mongoose';
 import { MyListService } from '../myList.service';
 import { Model } from 'mongoose';
 import { MyList } from '../../../schemas/myList/myList.schema';
+import { ContentType } from '../../../types';
 
 describe('MyListService', () => {
   let service: MyListService;
@@ -33,9 +34,15 @@ describe('MyListService', () => {
 
   describe('#createListItem', () => {
     it('should call create method of the model', async () => {
-      const dto = {}; // Pass your DTO here
-      await service.createListItem(dto);
-      expect(model.create).toHaveBeenCalledWith(dto);
+      const dto = {
+        contentName: 'mocked-content-name',
+        contentType: ContentType.MOVIE,
+      };
+      await service.createListItem('mocked-user-id', dto);
+      expect(model.create).toHaveBeenCalledWith({
+        ...dto,
+        user: { _id: 'mocked-user-id' },
+      });
     });
   });
 
